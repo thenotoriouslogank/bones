@@ -25,31 +25,43 @@ def main():
 #   sums()
     yes_or_no("Would you like to roll again?")
 
-def dice_bag():
+def dice_bag():    # BUG Need to figure out how to pass all of these parameters
+                   # in one line.
     """Take user input and convert it into dice and roll counts."""
-    die = input('Which die would you like to roll? ')
-    rolls = input('How many dice do you want to roll? ')
-#  dice = sum(rolls)
+    die = input("Which die would you like to roll? ")
+    rolls = input("How many dice do you want to roll? ")
     print('Rolling ' + str(rolls) + 'd' + str(die))
     time.sleep(float(rolls) * .01)
     results(die, rolls)
 
 
-
-# def sums(dice):
-    # total =
-    # basically just add all of the values we got together here
-    # print("TOTAL: " + total)
-
 def results(die, rolls):
     """Calculate dice rolls and print them to the console."""
+    records = []
     i = 1
     while i < (int(rolls) + 1):
         pips = str(random.randint(1, int(die)))
         print("-----------------------")
         print("Roll Number " + str(i) + "   |   " + pips)
-        print(i, int(pips))
+        records.append(int(pips))
         i = i + 1
+    sum_total(records)
+
+def sum_total(records):
+    print("=======================")
+    print("||     TOTAL: " + str(sum(records)) + "    ||" )
+
+#def drop_lowest(records):
+#    sorted(records)
+
+
+#def drop_highest():
+
+
+#def modifier():
+
+
+#def notes():
 
 
 def yes_or_no(question):
