@@ -20,18 +20,26 @@ def main():
 
     Keyword arguments: NOT YET IMPLEMENTED.
     """
-    setup()
+    dice_bag()
     time.sleep(.75)
+#   sums()
     yes_or_no("Would you like to roll again?")
 
-def setup():
-    """Prompt the user for input and return two variables."""
+def dice_bag():
+    """Take user input and convert it into dice and roll counts."""
     die = input('Which die would you like to roll? ')
     rolls = input('How many dice do you want to roll? ')
+#  dice = sum(rolls)
     print('Rolling ' + str(rolls) + 'd' + str(die))
-    time.sleep(float(rolls) * .05)
+    time.sleep(float(rolls) * .01)
     results(die, rolls)
 
+
+
+# def sums(dice):
+    # total =
+    # basically just add all of the values we got together here
+    # print("TOTAL: " + total)
 
 def results(die, rolls):
     """Calculate dice rolls and print them to the console."""
@@ -40,6 +48,7 @@ def results(die, rolls):
         pips = str(random.randint(1, int(die)))
         print("-----------------------")
         print("Roll Number " + str(i) + "   |   " + pips)
+        print(i, int(pips))
         i = i + 1
 
 
@@ -47,9 +56,13 @@ def yes_or_no(question):
     while "The answer is invalid":
         reply = str(raw_input(question + " (y/n): ")).lower().strip()
         if reply[:1] == "y":
+            print("Restarting. . . ")
+            time.sleep(2.5)
             main()
         if reply[:1] == "n":
-            return False
+            print("Goodbye!")
+            time.sleep(2.5)
+            sys.exit()
 
 # TODO Write docstrings.
 # TODO Create parameters for dice (to hit, for damage, etc.)
